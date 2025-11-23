@@ -1,8 +1,8 @@
 import streamlit as st
-import yfinance as yf
-import pandas as pd
-from hmmlearn import hmm
-import plotly.graph_objects as go
+#import yfinance as yf
+#import pandas as pd
+#from hmmlearn import hmm
+#import plotly.graph_objects as go
 
 st.title("Historical stock's volatility")
 st.subheader("Intro")
@@ -107,6 +107,7 @@ st.write("""**While classifying historical volatility patterns is valuable, stoc
             decisions must be made before events occur, so predictive models that estimate 
             future volatility are the goal. This forecasting 
             capability will be implemented in future versions.**""")
+
 
 
 
