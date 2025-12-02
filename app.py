@@ -50,9 +50,9 @@ states = model.predict(returns_array)
 var_0 = fridays[states == 0]['returns'].var()
 var_1 = fridays[states == 1]['returns'].var()
 if var_0 > var_1:
-    labels = {0: 'High Vol', 1: 'Low Vol'}
+    labels = {0: 'High Variance on Returns', 1: 'Low Variance on Returns'}
 else:
-    labels = {1: 'High Vol', 0: 'Low Vol'}
+    labels = {1: 'High Variance on Returns', 0: 'Low Variance on Returns'}
 
 fridays['state'] = pd.Categorical(states).rename_categories(labels)
 
@@ -62,7 +62,7 @@ fridays['state'] = pd.Categorical(states).rename_categories(labels)
 tab1, tab2 = st.tabs(["Chart", "Dataframe"])
 fig = go.Figure()
 for i in range(len(fridays) - 1):
-    color = 'yellow' if fridays['state'].iloc[i] == 'High Vol' else 'blue'
+    color = 'yellow' if fridays['state'].iloc[i] == 'High Variance on Returns' else 'blue'
     fig.add_trace(go.Scatter(
         x=fridays.index[i:i+2],
         y=fridays['returns'].iloc[i:i+2],
@@ -75,13 +75,13 @@ fig.add_trace(go.Scatter(
     x=[None], y=[None],
     mode='lines',
     line=dict(color='yellow', width=2),
-    name='High Volatility'
+    name='High Variance on Returns'
 ))
 fig.add_trace(go.Scatter(
     x=[None], y=[None],
     mode='lines',
     line=dict(color='blue', width=2),
-    name='Low Volatility'
+    name='Low Variance on Returns'
 ))
 
 fig.update_layout(height=450, xaxis_title='Date', yaxis_title='Returns')
@@ -112,4 +112,5 @@ st.write("""**While classifying historical volatility patterns is valuable, stoc
 
 
 #streamlit run app.py
+
 
